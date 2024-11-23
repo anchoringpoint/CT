@@ -80,10 +80,12 @@ event void Timer0.fired()
                 busy = TRUE;
             }
         } else if (TOS_NODE_ID == NODE_ID_2) {
+            counter=counter+1
             if (call AMSend.send(NODE_ID_1, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
                 busy = TRUE;
             }
         }
+        setLeds(counter); // 根据新的计数器值设置LED灯
     }       
 }
 
@@ -97,7 +99,7 @@ event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
     if (len == sizeof(BlinkToRadioMsg)) {
         BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
         if (btrpkt->nodeid != TOS_NODE_ID) {
-            counter = btrpkt->counter + 1; // 接收到对方的计数器后，自身计数器加1
+            counter = btrpkt->counter;
             setLeds(counter); // 根据新的计数器值设置LED灯
         }
     }
