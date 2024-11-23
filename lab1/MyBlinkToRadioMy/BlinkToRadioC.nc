@@ -80,7 +80,7 @@ event void Timer0.fired()
                 busy = TRUE;
             }
         } else if (TOS_NODE_ID == NODE_ID_2) {
-            counter=counter+1
+            counter=counter+1;
             if (call AMSend.send(NODE_ID_1, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
                 busy = TRUE;
             }
