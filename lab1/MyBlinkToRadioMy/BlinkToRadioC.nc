@@ -66,7 +66,6 @@ event void AMControl.stopDone(error_t err) {
 
 event void Timer0.fired()
 {
-    counter++;
     dbg("BlinkToRadioC", "BlinkToRadioC: timer fired, counter is %hu.\n", counter);
     if (!busy) {
         BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof(BlinkToRadioMsg)));
@@ -80,7 +79,7 @@ event void Timer0.fired()
                 busy = TRUE;
             }
         } else if (TOS_NODE_ID == NODE_ID_2) {
-            counter=counter+1;
+            btrpkt->counter = counter+1;
             if (call AMSend.send(NODE_ID_1, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
                 busy = TRUE;
             }
