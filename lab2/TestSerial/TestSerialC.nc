@@ -85,12 +85,12 @@ implementation {
       test_serial_msg_t* rcm = (test_serial_msg_t*)call Packet.getPayload(&packet, sizeof(test_serial_msg_t));
       if (rcm == NULL) {return;}
       if (call Packet.maxPayloadLength() < sizeof(test_serial_msg_t)) {
-	return;
+	    return;
       }
 
       rcm->counter = counter;
       if (call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(test_serial_msg_t)) == SUCCESS) {
-	locked = TRUE;
+	      locked = TRUE;
       }
     }
   }

@@ -84,8 +84,10 @@ event void Timer0.fired()
                 busy = TRUE;
             }
         }
+        
 
-    }       
+    }    
+    setLeds(counter); // 根据新的计数器值设置LED灯   
 }
 
 event void AMSend.sendDone(message_t* msg, error_t error) {
