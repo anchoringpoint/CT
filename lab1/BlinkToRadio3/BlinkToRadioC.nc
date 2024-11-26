@@ -84,10 +84,7 @@ event void Timer0.fired()
                 busy = TRUE;
             }
         }
-        
-
     }    
-    setLeds(counter); // 根据新的计数器值设置LED灯   
 }
 
 event void AMSend.sendDone(message_t* msg, error_t error) {
@@ -100,8 +97,7 @@ event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
     if (len == sizeof(BlinkToRadioMsg)) {
         BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
         if (btrpkt->nodeid != TOS_NODE_ID) {
-            counter = btrpkt->counter;
-            setLeds(counter); // 根据新的计数器值设置LED灯
+            setLeds(btrpkt->counter); // 根据新的计数器值设置LED灯
         }
     }
     return msg;
