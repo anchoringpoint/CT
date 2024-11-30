@@ -8,7 +8,7 @@ BlinkToRadio.class: $(wildcard *.java) BlinkToRadioMsg.java
 	javac -target 1.4 -source 1.4 *.java
 
 BlinkToRadioMsg.java:
-	mig java -target=null $(CFLAGS) -java-classname=BlinkToRadioMsg BlinkToRadio.h BlinkToRadio_msg -o $@
+	mig java -target=null $(CFLAGS) -java-classname=BlinkToRadioMsg BlinkToRadio.h BlinkToRadioMsg -o $@
 
 include $(MAKERULES)
 
