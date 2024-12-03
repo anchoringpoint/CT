@@ -87,17 +87,16 @@ event void RadioAMControl.stopDone(error_t err) {
 
 event void Timer0.fired()
 {
-    // counter++;
-    // dbg("BlinkToRadioC", "BlinkToRadioC: timer fired, counter is %hu.\n", counter);
-    // if (!busy) {
-    //     BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof(BlinkToRadioMsg)));
-    //     btrpkt->nodeid = TOS_NODE_ID;
-    //     btrpkt->counter = counter;
+    counter++;
+    dbg("BlinkToRadioC", "BlinkToRadioC: timer fired, counter is %hu.\n", counter);
+    if (!busy) {
+        test_serial_msg_t* btrpkt = (test_serial_msg_t*)(call Packet.getPayload(&pkt, sizeof(test_serial_msg_t)));
+        btrpkt->counter = counter;
 
-    //     if (call AMSend.send(AM_BROADCAST_ADDR, &pkt,sizeof(BlinkToRadioMsg)) == SUCCESS) {
-    //     busy = TRUE;
-    //     }
-    // }       
+        if (call AMSend.send(AM_BROADCAST_ADDR, &pkt,sizeof(test_serial_msg_t)) == SUCCESS) {
+        busy = TRUE;
+        }
+    }       
 }
 
 event void RadioAMSend.sendDone(message_t* msg, error_t error) {
