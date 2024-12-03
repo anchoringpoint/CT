@@ -1,5 +1,6 @@
 COMPONENT=BlinkToRadioAppC
 BUILD_EXTRA_DEPS += BlinkToRadio.class
+PFLAGS+=-DCC2420_DEF_CHANNEL=9
 CLEAN_EXTRA = *.class BlinkToRadioMsg.java
 
 CFLAGS += -I$(TOSDIR)/lib/T2Hack
