@@ -105,7 +105,7 @@ implementation {
       if (btrpkt == NULL) {
 	return;
       }
-      btrpkt->nodeid = TOS_NODE_ID;
+
       btrpkt->counter = counter;
       if (call AMSend.send(AM_BROADCAST_ADDR, 
           &pkt, sizeof(test_serial_msg_t)) == SUCCESS) {
