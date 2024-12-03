@@ -8,7 +8,7 @@
 
 #include "BlinkToRadio.h"
 
-configuration BlinkToRadioAppc {}
+configuration BlinkToRadioAppC {}
 implementation {
   components MainC, LedsC;
   components BlinkToRadioC as App;
